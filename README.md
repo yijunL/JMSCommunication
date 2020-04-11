@@ -10,6 +10,9 @@ Then clone the code and generate the jar package.
 Using the command line to run the jar file and input parameters to activate the function you want to use.  
 For example:java -jar xxx.jar fileSender.  
 
+## Security verification        ---2020/4/11
+Now we have joined the security verification process, and we need to enter the user name and password before starting the client. This function is based on mybatis framework.
+
 ## NEW FUNCTION!                                    ---2020/3/28
 The point to point(p2p) communication supports real-time translation!
 
