@@ -1,4 +1,4 @@
-# JMSCommunicationClient
+# JMSCommunication
 
 ## This is a communication system based on JMS framework and ActiveMQ message queue.
 
