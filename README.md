@@ -19,4 +19,4 @@ Mybatis is an excellent persistence framework that supports customized SQL, stor
 The point to point(p2p) communication supports real-time translation!   
 This function is realized through Baidu translation API. After receiving each message, it will query the current system region and call Baidu translation API to translate the message to the current region's language.   
 
-# This program is for learning purpose only！
+# This program is for STUDY purpose only！
