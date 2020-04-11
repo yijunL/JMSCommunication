@@ -16,6 +16,7 @@ Now we have joined the security verification process, and we need to enter the u
 Mybatis is an excellent persistence framework that supports customized SQL, stored procedures, and advanced mapping. Mybatis avoids almost all JDBC code and manual setting of parameters and getting result sets. Mybatis can use simple XML or annotation for configuration and native map to map interface and Java POJOs (plain old Java objects) to records in database.   
 
 ## NEW FUNCTION!                                    ---2020/3/28
-The point to point(p2p) communication supports real-time translation!
+The point to point(p2p) communication supports real-time translation!   
+This function is realized through Baidu translation API. After receiving each message, it will query the current system region and call Baidu translation API to translate the message to the current region's language.   
 
 # This program is for learning purpose only！
