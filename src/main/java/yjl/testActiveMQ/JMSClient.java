@@ -3,6 +3,7 @@ package yjl.testActiveMQ;
 import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import dao.UserDao;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import javax.jms.JMSException;
@@ -18,7 +19,7 @@ public class JMSClient {
         System.out.println("fileReceiver:从jms文件队列接受文件");
     }
 
-    public static void main(String[] cmd) throws JMSException {
+    public static void main(String[] cmd) throws JMSException, IOException {
         UserDao userDao=new UserDao();
         if (cmd.length == 0) {
             help();
@@ -32,10 +33,15 @@ public class JMSClient {
             String userId=sc.next();
             String password=sc.next();
             while(!userDao.check(userId,password)){
-                System.out.println("WRONG userId or password, try again or register! (enter r to register)");
+                System.out.println("WRONG userId or password, try again or register! (enter /r to register，/q to exist)");
                 userId=sc.next();
-//                if(userId.equals("r")||userId.equals("R"))
-
+                if("/r".equalsIgnoreCase(userId)){
+                    userDao.register();
+                    break;
+                }
+                if("/q".equalsIgnoreCase(userId)){
+                    System.exit(0);
+                }
                 password=sc.next();
             }
             //发送和接收并行运行
@@ -43,8 +49,8 @@ public class JMSClient {
 			ReceiverRunner receiverRunner=new ReceiverRunner(consumer);
 			receiverRunner.start();
 
-			System.out.println("Enter receiver ID:");
-            String destin=sc.nextLine();
+			System.out.println("Welcome to JMS Communication System! \nPlease enter receiver ID:");
+            String destin=sc.next();
             while (true) {
                 System.out.println("input you message(/q to exist,/c to change receiver):");
                 String msg = sc.nextLine();
@@ -60,7 +66,7 @@ public class JMSClient {
                 sender.sendMessage(msg,destin);;
 //                System.out.println("message send success");
             }
-        } //else if ("receiver".equalsIgnoreCase(mode)) {               //已被废弃
+        } //else if ("receiver".equalsIgnoreCase(mode)) {               //已被废弃（已实现多线程监听）
 //            JMSReceiver consumer = new JMSReceiver();
 //			ReceiverRunner receiverRunner=new ReceiverRunner(consumer);
 //			receiverRunner.start();
