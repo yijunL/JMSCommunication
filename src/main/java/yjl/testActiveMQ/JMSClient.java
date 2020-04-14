@@ -49,7 +49,7 @@ public class JMSClient {
 			ReceiverRunner receiverRunner=new ReceiverRunner(consumer);
 			receiverRunner.start();
 
-			System.out.println("Welcome to JMS Communication System! \nPlease enter receiver ID:");
+			System.out.println("\nWelcome to JMS Communication System! \nPlease enter receiver ID:");
             String destin=sc.next();
             while (true) {
                 System.out.println("input you message(/q to exist,/c to change receiver):");
